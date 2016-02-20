@@ -1,7 +1,7 @@
 {
   "name": "chat-app",
   "description": "Socket.io chat app",
-  "main": "app.js",
+  "main": "server.js",
   "authors": [
     "Cathal Killeen"
   ],
@@ -17,6 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "^2.2.0"
+    "jquery": "^2.2.0",
+    "angular": "^1.5.0"
   }
 }
