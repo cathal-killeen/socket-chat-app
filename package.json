@@ -1,0 +1,14 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "Socket.io chat app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cathal Killeen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
