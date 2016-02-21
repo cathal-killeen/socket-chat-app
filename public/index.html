@@ -13,9 +13,15 @@
                 <div class="panel-body messages" id="chatwindow" style="height: 320px; overflow:scroll;">
                 </div>
                 <div class="panel-footer">
-                    <form id="message-form" class="form-inline" style="width: 100%" autocomplete="off">
-                        <input type="text" name="message" style="width: 85%" class="form-control" placeholder="Enter message here...">
-                        <button type="submit" class="btn btn-primary pull-right" style="width:13%"><span class="glyphicon glyphicon-send" aria-hidden="true"></span></button>
+                    <form id="message-form" autocomplete="off">
+                        <div class="row">
+                            <div class="col-xs-10" style="padding-right: 5px">
+                                <input type="text" name="message" class="form-control" placeholder="Enter message here...">
+                            </div>
+                            <div class="col-xs-2" style="padding-left: 0px">
+                                <button type="submit" class="btn btn-primary" style="width: 100%"><span class="glyphicon glyphicon-send" aria-hidden="true"></span></button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
