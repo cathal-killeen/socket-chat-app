@@ -4,17 +4,30 @@
         <meta charset="utf-8">
         <title>Chat App</title>
 
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+
     </head>
     <body>
-        <form id="message-form">
-            <input type="text" name="message">
-            <input type="submit">
-        </form>
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+            <div class="panel panel-default" style="margin-top: 100px">
+                <div class="panel-body messages" id="chatwindow" style="height: 320px; overflow:scroll;">
+                </div>
+                <div class="panel-footer">
+                    <form id="message-form" class="form-inline" style="width: 100%" autocomplete="off">
+                        <input type="text" name="message" style="width: 85%" class="form-control" placeholder="Enter message here...">
+                        <button type="submit" class="btn btn-primary pull-right" style="width:13%"><span class="glyphicon glyphicon-send" aria-hidden="true"></span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
 
 
         <!-- EXTERNAL SCRIPTS -->
         <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
         <script src="/libs/jquery/dist/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+
 
         <!-- INTERNAL JS -->
         <script src="/js/app.js"></script>
