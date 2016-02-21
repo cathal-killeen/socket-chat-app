@@ -1,5 +1,7 @@
 var socket = io();
 
+var chatWindow = document.getElementById('chatwindow');
+
 socket.on('connect', function(){
     console.log('Connected to socket.io server');
 });
@@ -9,6 +11,7 @@ socket.on('message', function(message){
     console.log(message.content);
 
     jQuery('.messages').append('<p>' + message.content + '</p>');
+    chatWindow.scrollTop = chatWindow.scrollHeight;
 });
 
 // SUBMIT NEW message
