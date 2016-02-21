@@ -11,9 +11,7 @@ io.on('connection', function(socket) {
 
     socket.on('message', function(message) {
         console.log('Message recieved: ' + message.content);
-
-        socket.broadcast.emit('message', message);
-    })
+    });
 
     socket.emit('message', {
         content: 'Welcome to this chat app!!'
