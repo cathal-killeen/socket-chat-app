@@ -15,7 +15,13 @@ var $form = jQuery('#message-form');
 $form.on('submit', function(event){
     event.preventDefault();
 
-    socket.emit('message', {
-        content: $form.find('input[name=message]').val()
-    });
+    var $message = $form.find('input[name=message]');
+
+    if($message.val() !== ''){
+        socket.emit('message', {
+            content: $message.val()
+        });
+
+        $message.val('');
+    }
 });
