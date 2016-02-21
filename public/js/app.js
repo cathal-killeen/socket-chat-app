@@ -7,10 +7,11 @@ socket.on('connect', function(){
 });
 
 socket.on('message', function(message){
+    var momentTimestamp = moment.utc(message.timestamp);
     console.log('New message');
     console.log(message.content);
 
-    jQuery('.messages').append('<p>' + message.content + '</p>');
+    jQuery('.messages').append('<p><strong>' + momentTimestamp.format('h:mm a') + '</strong> ' + message.content + '</p>');
     chatWindow.scrollTop = chatWindow.scrollHeight;
 });
 
