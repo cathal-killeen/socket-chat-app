@@ -9,8 +9,6 @@ var moment = require('moment'),
 app.use(express.static(__dirname + '/public'));
 
 io.on('connection', function(socket) {
-    
-
     console.log('User connected via socket.io');
 
     socket.on('message', function(message) {
@@ -20,11 +18,20 @@ io.on('connection', function(socket) {
         io.emit('message', message);
     });
 
+    socket.on('nudge', function(){
+        console.log('Nudge recieved!');
+
+        io.emit('nudge');
+    })
+
     socket.emit('message', {
         content: 'Welcome to this chat app!!',
         name: 'Welcome',
         timestamp: now.valueOf()
     });
+
+
+
 });
 
 http.listen(PORT, function(){

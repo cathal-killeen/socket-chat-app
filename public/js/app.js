@@ -47,7 +47,9 @@ app.controller('MainController', ['socket', '$scope', '$timeout', function(socke
         });
     });
 
-
+    socket.on('nudge', function(){
+        angular.element("#chatpanel").animate("tada");
+    });
 
     $scope.myMessage = {
         name: '',
@@ -66,7 +68,7 @@ app.controller('MainController', ['socket', '$scope', '$timeout', function(socke
         if($scope.myMessage.content !== ''){
             $scope.sendMessage();
         }else{
-            angular.element("#chatpanel").animate("tada");
+            socket.emit('nudge');
         }
     }
 
