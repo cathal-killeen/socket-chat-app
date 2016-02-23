@@ -12,30 +12,21 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
         <script src="libs/angular/angular.min.js"></script>
         <script src="libs/angular-socket-io/socket.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 
         <!-- INTERNAL JS -->
         <script src="/js/app.js"></script>
+
+        <!-- CSS -->
+        <link href="/css/animate.css" rel="stylesheet"></link>
+        <link href="/css/style.css" rel="stylesheet"></link>
     </head>
     <body ng-controller="MainController">
         <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default" style="margin-top: 9em">
-                <div class="panel-body">
-                    <!-- <form id="name-form" autocomplete="off"> -->
-                        <div class="row">
-                            <div class="col-xs-9" style="padding-right: 0.3em">
-                                <input type="text" name="username" class="form-control input-md" placeholder="Name">
-                            </div>
-                            <div class="col-xs-3" style="padding-left: 0em">
-                                <button type="submit" class="btn btn-primary btn-md" style="width: 100%">Set Name</button>
-                            </div>
-                        </div>
-                    <!-- </form> -->
-                </div>
-            </div>
-            <div class="panel panel-default" style="margin-top: 2em">
-                <div class="panel-body messages" id="chatwindow" style="height: 12em; overflow-y:scroll; overflow-x:hidden; word-wrap: break-word; font-size:1.2em;">
+            <div class="panel panel-default" id="chatpanel" style="margin-top: 9em">
+                <div class="panel-body messages" id="chatwindow" style="height: 18em; overflow-y:scroll; overflow-x:hidden; word-wrap: break-word; font-size:1.2em;">
                     <div ng-repeat="message in messages">
                         <new-message message-obj="message"></new-message>
                     </div>
@@ -47,7 +38,22 @@
                                 <input ng-keydown="$event.which === 13 && sendMessage()" type="text" name="message" ng-model="myMessage.content" class="form-control input-md" placeholder="Enter message here...">
                             </div>
                             <div class="col-xs-3" style="padding-left: 0em">
-                                <button ng-click="sendMessage()" class="btn btn-primary btn-md" style="width: 100%"><span class="glyphicon glyphicon-send" aria-hidden="true"></span></button>
+                                <button ng-click="sendMessage()" class="btn btn-primary btn-md" style="width: 100%">{{sendButton}}</button>
+                            </div>
+                        </div>
+                    <!-- </form> -->
+                </div>
+            </div>
+
+            <div class="panel panel-default name-panel animated bounce" ng-hide="nameSelected" style="margin-top: 2em">
+                <div class="panel-body">
+                    <!-- <form id="name-form" autocomplete="off"> -->
+                        <div class="row">
+                            <div class="col-xs-9" style="padding-right: 0.3em">
+                                <input ng-model="myMessage.name" type="text" name="username" class="form-control input-md" placeholder="Name">
+                            </div>
+                            <div class="col-xs-3" style="padding-left: 0em">
+                                <button ng-click="setName()" class="btn btn-primary btn-md" style="width: 100%">Set Name</button>
                             </div>
                         </div>
                     <!-- </form> -->

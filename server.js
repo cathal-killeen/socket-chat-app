@@ -9,6 +9,8 @@ var moment = require('moment'),
 app.use(express.static(__dirname + '/public'));
 
 io.on('connection', function(socket) {
+    
+
     console.log('User connected via socket.io');
 
     socket.on('message', function(message) {
