@@ -3,8 +3,7 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var moment = require('moment'),
-    now = moment();
+var moment = require('moment');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -14,7 +13,9 @@ io.on('connection', function(socket) {
     socket.on('message', function(message) {
         console.log('Message recieved: ' + message.content);
 
-        message.timestamp = now.valueOf();
+        message.timestamp = moment().valueOf();
+
+        console.log(message.timestamp);
         io.emit('message', message);
     });
 
@@ -27,7 +28,7 @@ io.on('connection', function(socket) {
     socket.emit('message', {
         content: 'Welcome to this chat app!!',
         name: 'Welcome',
-        timestamp: now.valueOf()
+        timestamp: moment().valueOf()
     });
 
 

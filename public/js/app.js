@@ -3,7 +3,7 @@ var app = angular.module('chatApp', ['btford.socket-io', 'ngAnimate']);
 app.directive('newMessage', function(){
     return{
         restrict: 'E',
-        template: '<p><strong>{{messageObj.name}}</strong>: {{messageObj.content}} <small>- {{messageObj.time()}}</small></p>',
+        template: '<p><strong>{{messageObj.name}}</strong>: {{messageObj.content}} <small>- {{messageObj.time}}</small></p>',
         scope: {
             messageObj: '='
         },
@@ -28,19 +28,13 @@ app.controller('MainController', ['socket', '$scope', '$timeout', function(socke
     });
 
     socket.on('message', function(message){
-        var momentTimestamp = moment.utc(message.timestamp);
         console.log('New message');
         console.log(message.content);
+        console.log(message.timestamp);
 
-        message.time = function(){
-            var momentTimestamp = moment.utc(this.timestamp);
-            return momentTimestamp.local().format('h:mm a');
-        }
+        message.time = moment.utc(message.timestamp).local().format('h:mm a');
 
-        $scope.recievedMessage = message;
-
-
-        $scope.messages.push($scope.recievedMessage);
+        $scope.messages.push(message);
 
         $timeout(function(){
             chatWindow.scrollTop = chatWindow.scrollHeight;
