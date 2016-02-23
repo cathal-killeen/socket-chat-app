@@ -1,0 +1,5 @@
+
+.name-panel.ng-hide-add {
+    animation: rubberBand;
+    -vendor-animation-duration: 3s;
+}
