@@ -18,6 +18,7 @@ app.factory('socket', ['socketFactory', function(socketFactory){
 app.controller('MainController', ['socket', '$scope', '$timeout', function(socket, $scope, $timeout){
 
     $scope.nameSelected = false;
+    $scope.showChat = false;
     $scope.messages = [];
 
     var chatWindow = document.getElementById('chatwindow');
@@ -49,7 +50,7 @@ app.controller('MainController', ['socket', '$scope', '$timeout', function(socke
 
 
     $scope.myMessage = {
-        name: 'Cathal',
+        name: '',
         content: ''
     }
 
@@ -75,6 +76,11 @@ app.controller('MainController', ['socket', '$scope', '$timeout', function(socke
     $scope.setName = function(){
         if($scope.myMessage.name !== ''){
             $scope.nameSelected = true;
+            $timeout(function () {
+                $scope.showChat = true;
+            }, 1000);
+        }else{
+            angular.element("#namepanel").animate("shake");
         }
     }
 

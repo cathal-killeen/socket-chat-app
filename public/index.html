@@ -25,38 +25,36 @@
     </head>
     <body ng-controller="MainController">
         <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default" id="chatpanel" style="margin-top: 9em">
+
+            <div class="panel panel-default" id="chatpanel" ng-show="showChat" style="margin-top: 14em">
                 <div class="panel-body messages" id="chatwindow" style="height: 18em; overflow-y:scroll; overflow-x:hidden; word-wrap: break-word; font-size:1.2em;">
                     <div ng-repeat="message in messages">
                         <new-message message-obj="message"></new-message>
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <!-- <form id="message-form" autocomplete="off"> -->
-                        <div class="row">
-                            <div class="col-xs-9" style="padding-right: 0.3em">
-                                <input ng-keydown="$event.which === 13 && sendMessage()" type="text" name="message" ng-model="myMessage.content" class="form-control input-md" placeholder="Enter message here...">
-                            </div>
-                            <div class="col-xs-3" style="padding-left: 0em">
-                                <button ng-click="sendMessage()" class="btn btn-primary btn-md" style="width: 100%">{{sendButton}}</button>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-9" style="padding-right: 0.3em">
+                            <input ng-keydown="$event.which === 13 && sendMessage()" type="text" name="message" ng-model="myMessage.content" class="form-control input-md" placeholder="Enter message here..." autocomplete="off">
                         </div>
-                    <!-- </form> -->
+                        <div class="col-xs-3" style="padding-left: 0em">
+                            <button ng-click="sendMessage()" class="btn btn-primary btn-md" style="width: 100%">{{sendButton}}</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="panel panel-default name-panel animated bounce" ng-hide="nameSelected" style="margin-top: 2em">
+
+            <div class="panel panel-default name-panel" id="namepanel" ng-hide="nameSelected" style="margin-top: 20em">
                 <div class="panel-body">
-                    <!-- <form id="name-form" autocomplete="off"> -->
-                        <div class="row">
-                            <div class="col-xs-9" style="padding-right: 0.3em">
-                                <input ng-model="myMessage.name" type="text" name="username" class="form-control input-md" placeholder="Name">
-                            </div>
-                            <div class="col-xs-3" style="padding-left: 0em">
-                                <button ng-click="setName()" class="btn btn-primary btn-md" style="width: 100%">Set Name</button>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-9" style="padding-right: 0.3em">
+                            <input ng-model="myMessage.name" ng-keydown="$event.which === 13 && setName()" type="text" name="username" class="form-control input-md" placeholder="Name" autocomplete="off">
                         </div>
-                    <!-- </form> -->
+                        <div class="col-xs-3" style="padding-left: 0em">
+                            <button ng-click="setName()" class="btn btn-primary btn-md" style="width: 100%">Set Name</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
