@@ -62,14 +62,25 @@ app.controller('MainController', ['socket', '$scope', '$timeout', function(socke
         }
     });
 
+    $scope.sendButtonFunc = function(){
+        if($scope.myMessage.content !== ''){
+            $scope.sendMessage();
+        }else{
+            angular.element("#chatpanel").animate("tada");
+        }
+    }
+
+    $scope.messageBoxEnter = function(){
+        if($scope.myMessage.content !== ''){
+            $scope.sendMessage();
+        }
+    }
+
 
     $scope.sendMessage = function(){
         if($scope.myMessage.content !== ''){
             socket.emit('message', $scope.myMessage);
-
             $scope.myMessage.content = '';
-        }else{
-            angular.element("#chatpanel").animate("tada");
         }
     }
 

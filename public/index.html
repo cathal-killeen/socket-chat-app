@@ -35,10 +35,10 @@
                 <div class="panel-footer">
                     <div class="row">
                         <div class="col-xs-9" style="padding-right: 0.3em">
-                            <input ng-keydown="$event.which === 13 && sendMessage()" type="text" name="message" ng-model="myMessage.content" class="form-control input-md" placeholder="Enter message here..." autocomplete="off">
+                            <input ng-keydown="$event.which === 13 && messageBoxEnter()" type="text" name="message" ng-model="myMessage.content" class="form-control input-md" placeholder="Enter message here..." autocomplete="off">
                         </div>
                         <div class="col-xs-3" style="padding-left: 0em">
-                            <button ng-click="sendMessage()" class="btn btn-primary btn-md" style="width: 100%">{{sendButton}}</button>
+                            <button ng-click="sendButtonFunc()" class="btn btn-primary btn-md" style="width: 100%">{{sendButton}}</button>
                         </div>
                     </div>
                 </div>
