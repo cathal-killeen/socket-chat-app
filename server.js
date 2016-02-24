@@ -30,9 +30,6 @@ io.on('connection', function(socket) {
         name: 'Welcome',
         timestamp: moment().valueOf()
     });
-
-
-
 });
 
 http.listen(PORT, function(){

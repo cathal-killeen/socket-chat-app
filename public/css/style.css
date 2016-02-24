@@ -1,8 +1,8 @@
 
 .ng-hide-add {
-    animation: 1s bounceOutDown ease;
+    animation: 0.75s bounceOutDown ease;
 }
 
 .ng-hide-remove {
-    animation: 1s bounceInDown ease;
+    animation: 0.75s bounceInDown ease;
 }
