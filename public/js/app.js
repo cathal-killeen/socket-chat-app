@@ -83,7 +83,11 @@ app.controller('MainController', ['socket', '$scope', '$timeout', function(socke
     $scope.setName = function(){
         if($scope.myMessage.name !== ''){
             $scope.nameSelected = true;
-            $scope.showChat = true;
+            socket.emit('setname', $scope.myMessage.name);
+            $timeout(function () {
+                $scope.showChat = true;
+            }, 1000);
+
         }else{
             angular.element("#namepanel").animate("shake");
         }

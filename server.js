@@ -7,6 +7,8 @@ var moment = require('moment');
 
 app.use(express.static(__dirname + '/public'));
 
+var clientInfo = {};
+
 io.on('connection', function(socket) {
     console.log('User connected via socket.io');
 
@@ -19,17 +21,26 @@ io.on('connection', function(socket) {
         io.emit('message', message);
     });
 
+    socket.on('setname', function(name){
+        clientInfo[socket.id] = name;
+
+        socket.emit('message', {
+            content: 'Welcome to this chat app, ' + clientInfo[socket.id] + '!',
+            name: 'Welcome',
+            timestamp: moment().valueOf()
+        });
+
+        console.log(clientInfo[socket.id]);
+    });
+
     socket.on('nudge', function(){
         console.log('Nudge recieved!');
 
         io.emit('nudge');
-    })
-
-    socket.emit('message', {
-        content: 'Welcome to this chat app!!',
-        name: 'Welcome',
-        timestamp: moment().valueOf()
     });
+
+
+
 });
 
 http.listen(PORT, function(){
