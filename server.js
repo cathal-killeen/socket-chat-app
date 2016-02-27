@@ -12,6 +12,16 @@ var clientInfo = {};
 io.on('connection', function(socket) {
     console.log('User connected via socket.io');
 
+    socket.on('disconnect', function(){
+        if(clientInfo[socket.id] !== 'undefined'){
+            io.emit('message', {
+                content: clientInfo[socket.id] + ' left the chat',
+                name: 'Bot',
+                timestamp: moment().valueOf()
+            })
+        }
+    })
+
     socket.on('message', function(message) {
         console.log('Message recieved: ' + message.content);
 
@@ -29,6 +39,12 @@ io.on('connection', function(socket) {
             name: 'Welcome',
             timestamp: moment().valueOf()
         });
+
+        io.emit('message', {
+            content: clientInfo[socket.id] + ' joined the chat!',
+            name: 'Bot',
+            timestamp: moment().valueOf()
+        })
 
         console.log(clientInfo[socket.id]);
     });
